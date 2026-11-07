@@ -26,15 +26,15 @@ Las versiones exactas están en [software/librerias/README.md](software/libreria
 
 ## Modelos 3D de terceros
 
-El archivo `diseno_3d/fusion360/perfboard_controlador_motor.f3d` incluye modelos descargados de terceros para la placa TTGO T-Call, el driver A4988 y el condensador. Los modelos originales no se redistribuyen por separado en este repositorio. Quien los necesite debe bajarlos desde el sitio de cada fabricante o desde el repositorio donde los publicó su autor.
+El archivo `diseno_3d/fusion360/perfboard_controlador_motor.f3d` incluye modelos descargados de terceros para la placa TTGO T-Call, el driver A4988 y el condensador. Los modelos originales no se redistribuyen por separado en este repositorio. No se anotó el autor ni el enlace al descargarlos, y ese dato queda por completar. Quien los necesite debe buscarlos en el sitio de cada fabricante.
 
 ## Datasheets y documentación técnica consultada
 
-- Hoja de datos del driver A4988 (Allegro MicroSystems), para la fórmula de Vref y los micropasos.
-- Hoja de datos del sensor HC-SR04, para el rango y el ángulo de medición.
-- Pinout de la placa TTGO T-Call V1.4 del fabricante LilyGO, para evitar los pines que usa el módem SIM800L.
-- Hoja de datos del motor Minebea 17PM-K374BN02CN.
-- Documentación de la Raspberry Pi 4 Model B.
+- Hoja de datos del driver A4988 (Allegro MicroSystems), para la fórmula de Vref y los micropasos. https://www.allegromicro.com/en/products/motor-drivers/brush-dc-motor-drivers/a4988
+- Hoja de datos del sensor HC-SR04, para el rango y el ángulo de medición. https://cdn.sparkfun.com/datasheets/Sensors/Proximity/HCSR04.pdf
+- Pinout de la placa TTGO T-Call V1.4 de LilyGO, para evitar los pines que usa el módem SIM800L. https://github.com/Xinyuan-LilyGO/LilyGo-T-Call-SIM800
+- Hoja de datos del motor Minebea 17PM-K374BN02CN, del fabricante.
+- Documentación de la Raspberry Pi. https://www.raspberrypi.com/documentation/computers/raspberry-pi.html
 
 ## Datos
 

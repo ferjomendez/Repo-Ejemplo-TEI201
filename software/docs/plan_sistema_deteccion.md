@@ -1,3 +1,5 @@
+> Documento de planificación copiado del proyecto RockU. Refleja el estado al 30-09-2026 y puede nombrar archivos que no están en este repositorio, como `esp32cam_basico.ino`.
+
 # Sistema de detección para correa transportadora (MVP)
 
 Proyecto: Taller de Innovación, monitoreo de correas transportadoras para minería en Latinoamérica.

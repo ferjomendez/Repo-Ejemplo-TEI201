@@ -14,7 +14,7 @@ La pregunta de diseño es cómo detectar a bajo costo tres situaciones, la corre
 
 ## 2. Solución propuesta
 
-RockU es un prototipo a escala. Un teléfono Android ubicado a 28 cm sobre la correa entrega imágenes a una Raspberry Pi 4. La Pi mide velocidad por correlación de fase, y desvío y ángulo a partir de dos líneas impresas en la correa. Una máquina de estados confirma cada situación tras varios cuadros seguidos para evitar falsas alarmas. Un sensor HC-SR04 conectado a un ESP32 avisa cuando un objeto cruza bajo él, y la Pi pide una foto en ese instante.
+RockU es un prototipo a escala. Un teléfono Android ubicado a 28 cm sobre la correa entrega imágenes a una Raspberry Pi 4. La Pi mide velocidad por correlación de fase, y desvío y ángulo a partir de dos líneas impresas en la correa. Una máquina de estados confirma cada situación tras varios cuadros seguidos para evitar falsas alarmas. Un sensor HC-SR04 conectado a un ESP32 está previsto para avisar cuando un objeto cruza bajo él, y la Pi pide una foto en ese instante. El firmware de ese nodo sigue pendiente.
 
 ![Esquema general](../../hardware/esquemas/esquema_sistema.png)
 
@@ -24,7 +24,7 @@ Los datos se guardan en SQLite, se muestran en un panel web y en una pantalla de
 
 ### 3.1 Captura de datos
 
-La cámara entrega unos 10 cuadros por segundo. A 5 a 15 cm/s la correa avanza entre 0.5 y 1.5 cm por cuadro, lo que basta para la correlación de fase y permite confirmar un cambio en menos de un segundo. El sensor de distancia lee unas 20 veces por segundo para no perder objetos pequeños. La app bloquea exposición, balance de blancos y enfoque para que la imagen no cambie por el autoajuste.
+La cámara entrega unos 10 cuadros por segundo. A 5 a 15 cm/s la correa avanza entre 0.5 y 1.5 cm por cuadro, lo que basta para la correlación de fase y permite confirmar un cambio en menos de un segundo. El sensor de distancia leerá unas 20 veces por segundo para no perder objetos pequeños, una vez que esté escrito su firmware. La app bloquea exposición, balance de blancos y enfoque para que la imagen no cambie por el autoajuste.
 
 ### 3.2 Repositorio de datos
 
@@ -50,9 +50,9 @@ El código de la Pi se divide en detección, servidor, fuentes de datos, registr
 
 | Componente | Razón principal |
 |---|---|
-| Raspberry Pi 4 | Procesa cuadros de 640x480 a 10 por segundo sin acelerador y corre Python y SQLite |
+| Raspberry Pi 4 | Procesa cuadros reducidos a 480x640 a 10 por segundo sin acelerador y corre Python y SQLite |
 | Teléfono Android | Entrega 1080x1440 a 10.3 cuadros por segundo con exposición y enfoque bloqueables. La ESP32-CAM daba 320x240 a 5.6 |
-| HC-SR04 | Mide de 2 a 400 cm, suficiente para el sensor a 12 cm de la correa |
+| HC-SR04 | Mide de 2 a 400 cm. A 12 cm su cono cubre una franja central de unos 3 cm, así que detecta objetos que pasan por el centro de la correa |
 | ESP32 TTGO T-Call y driver A4988 | Lógica de 3.3 V compatible y micropasos de 1/16 para un giro suave |
 | Motor Minebea 17PM-K374BN02CN | Paso de 1.8 grados, 200 pasos por vuelta |
 
@@ -78,7 +78,7 @@ El driver y la TTGO van en sockets, la entrada de 12 V en bornera de tornillo y 
 
 > El ensamble, los renders y el plano son inventados. El archivo de la perfboard es real.
 
-La caja de control mide 170 x 120 x 60 mm, es de PLA con pared de 2.4 mm y tiene ventana para la pantalla, ventilas, puertos accesibles y tapa con tornillos.
+La caja de control mide 170 x 120 x 60 mm, es de PLA con pared de 2.4 mm y tiene una ventana de 75 x 50 mm para la pantalla, ventilas, puertos accesibles y tapa con tornillos.
 
 ![Explosionado](../../diseno_3d/renders/render_02_explosionado.png)
 
@@ -102,11 +102,11 @@ Las fallas aparecen con contraste muy bajo, con una línea tapada y con valores 
 
 ### 6.2 Correa física y usuarios (inventado)
 
-Con la correa física se confirmaron 19 de 20 detenciones, 18 de 20 desalineaciones y 28 de 30 piedras, con una falsa alarma en 30 minutos. Cinco usuarios identificaron bien 19 de 20 estados, en 5.8 segundos en promedio. El análisis completo está en el [reporte de testing](../../testing/reportes/reporte_testing.md).
+Con la correa física se confirmaron 19 de 20 detenciones, 18 de 20 desalineaciones y 28 de 30 piedras, con una falsa alarma en 30 minutos, que no cumple el criterio de menos de una. Esta prueba supone terminado el firmware del sensor. Cinco usuarios identificaron bien 19 de 20 estados, en 5.8 segundos en promedio. El análisis completo está en el [reporte de testing](../../testing/reportes/reporte_testing.md).
 
 ### 6.3 Validación contra el problema
 
-El sistema avisa en menos de un segundo, y convierte las medidas en disponibilidad y detenciones. Falta medirlo con la correa real, porque los datos físicos de este ejemplo son inventados.
+En simulación, el sistema confirma los cambios en menos de un segundo y convierte las medidas en disponibilidad y detenciones. Falta medirlo con la correa real, porque los datos físicos de este ejemplo son inventados.
 
 ## 7. Iteraciones
 

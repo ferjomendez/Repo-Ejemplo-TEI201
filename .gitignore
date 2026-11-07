@@ -22,6 +22,8 @@ pi/videos/
 videos/
 calibracion.json
 *.csv
+!hardware/bom/BOM.csv
+!testing/datos/*.csv
 *.db
 
 # Modelos de terceros (no se suben)

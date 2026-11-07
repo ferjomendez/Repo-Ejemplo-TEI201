@@ -14,10 +14,10 @@ Esta carpeta documenta el hardware completo del prototipo, desde la justificaci�
 
 | Componente | Función | Justificación técnica |
 |---|---|---|
-| Raspberry Pi 4 Model B | Analiza imagen, decide el estado y sirve el panel | El análisis trabaja sobre cuadros reducidos a 640x480 a unos 10 por segundo, carga que un procesador de 4 núcleos resuelve sin acelerador. Corre Linux, Python y SQLite sin cambios. Pide una fuente de 5 V y 3 A |
+| Raspberry Pi 4 Model B | Analiza imagen, decide el estado y sirve el panel | El análisis trabaja sobre cuadros reducidos a 480 píxeles de ancho, es decir 480x640 con la imagen vertical, a unos 10 por segundo, carga que un procesador de 4 núcleos resuelve sin acelerador. Corre Linux, Python y SQLite sin cambios. Pide una fuente de 5 V y 3 A |
 | Teléfono Android | Cámara cenital | La ESP32-CAM entregó 320x240 a 5.6 cuadros por segundo y tinte verdoso. El teléfono entrega 1080x1440 a 10.3 cuadros por segundo y permite bloquear exposición, balance de blancos y enfoque |
-| HC-SR04 | Detecta objetos que pasan sobre la correa | Mide de 2 a 400 cm con un cono de unos 15 grados, suficiente para una correa de 15 cm de ancho con el sensor a 12 cm. Consume alrededor de 15 mA a 5 V |
-| ESP32-CAM, solo como nodo | Lee el HC-SR04 y avisa a la Pi por WiFi | Ya estaba disponible y tiene WiFi. Su cámara no se usa |
+| HC-SR04 | Detecta objetos que pasan sobre la correa | Mide de 2 a 400 cm con un cono de unos 15 grados. A 12 cm el cono cubre una franja de unos 3 cm, así que el diseño detecta objetos que pasan por el centro de la correa. Cubrir los 15 cm de ancho exigiría sumar sensores. Consume alrededor de 15 mA a 5 V |
+| ESP32-CAM, solo como nodo | Lee el HC-SR04 y avisa a la Pi por WiFi | Ya estaba disponible y tiene WiFi. Su cámara no se usa. El firmware está pendiente |
 | ESP32 TTGO T-Call V1.4 | Genera los pulsos STEP y DIR del motor | Lógica de 3.3 V, igual que la entrada del driver. Se evitaron los pines del módem SIM800L, por eso ENABLE va en el GPIO25 |
 | Driver A4988 (HR4988) | Controla el motor paso a paso | Soporta VMOT de 8 a 35 V y micropasos hasta 1/16. Con Rs de 0.10 Ω, un Vref de 0.24 V da una corriente de 0.3 A |
 | Motor Minebea 17PM-K374BN02CN | Mueve la correa a escala | Paso de 1.8 grados, 200 pasos por vuelta. Con 1/16 de micropaso gira suave a las velocidades de 5 a 15 cm/s |

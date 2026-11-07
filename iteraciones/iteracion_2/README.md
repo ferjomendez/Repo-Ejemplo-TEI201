@@ -1,6 +1,6 @@
 # Iteración 2, teléfono como cámara
 
-Fecha de ejemplo, 24-04-2026. El detalle de fechas es inventado.
+Fecha de ejemplo, 02-10-2026. El detalle de fechas es inventado.
 
 ![Arquitectura de la versión 2](arquitectura_v2.png)
 

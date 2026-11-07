@@ -18,13 +18,13 @@
 
 ## Descripción del proyecto
 
-RockU es un prototipo a escala de un sistema de monitoreo para correas transportadoras. Un teléfono Android hace de cámara cenital sobre la correa y una Raspberry Pi 4 analiza las imágenes. La Pi mide velocidad, desvío lateral y ángulo, y con eso decide en qué estado está la correa. Un sensor ultrasónico HC-SR04 conectado a un ESP32 avisa cuando pasa un objeto. Todo queda registrado en una base SQLite, se muestra en un panel web y en una pantalla de 3.5 pulgadas, y se puede exportar a CSV.
+RockU es un prototipo a escala de un sistema de monitoreo para correas transportadoras. Un teléfono Android hace de cámara cenital sobre la correa y una Raspberry Pi 4 analiza las imágenes. La Pi mide velocidad, desvío lateral y ángulo, y con eso decide en qué estado está la correa. Un sensor ultrasónico HC-SR04 conectado a un ESP32 está pensado para avisar cuando pasa un objeto. Esa parte está diseñada y su contrato con la Pi está en la API, pero el firmware del sensor todavía no está escrito. Todo queda registrado en una base SQLite, se muestra en un panel web y en una pantalla de 3.5 pulgadas, y se puede exportar a CSV.
 
 Detecta tres situaciones y las confirma por persistencia para evitar falsas alarmas.
 
 - Correa detenida
 - Desalineación lateral
-- Paso de un objeto o piedra
+- Paso de un objeto o piedra, con el sensor de distancia (firmware pendiente)
 
 ![Panel de RockU con el simulador](software/docs/img/dashboard_panel.png)
 
@@ -44,7 +44,7 @@ Detecta tres situaciones y las confirma por persistencia para evitar falsas alar
 | Exactitud en condiciones extremas | 86.9 % (1 520 cuadros) | Real, simulación |
 | Error de velocidad en el caso base | 0.62 % de error medio absoluto | Real, simulación |
 | Error de desvío lateral | 0.12 mm de error medio absoluto | Real, simulación |
-| Tiempo de confirmación de una detención | 0.65 s en promedio | Real, simulación |
+| Tiempo de confirmación de una detención | 0.6 s en el caso base y 0.65 s en el difícil | Real, simulación |
 | Imágenes por segundo, teléfono contra ESP32-CAM | 10.3 contra 5.6 | Real, medido desde la Pi |
 | Pruebas con la correa física y con 5 usuarios | Ver `testing/` | **Inventado** |
 

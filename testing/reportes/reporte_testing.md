@@ -63,12 +63,14 @@ Mejoras que salen de este análisis.
 
 ## Prueba B, correa física (inventado)
 
-| Prueba | Repeticiones | Detectadas | Tasa | Latencia media |
-|---|---|---|---|---|
-| Detención de la correa | 20 | 19 | 95 % | 0.8 s |
-| Desalineación lateral de 6 mm | 20 | 18 | 90 % | 0.5 s |
-| Paso de una piedra | 30 | 28 | 93 % | no aplica |
-| Operación normal durante 30 minutos | | 1 falsa alarma | | |
+Esta prueba supone terminado el firmware del sensor, que en el proyecto real sigue pendiente.
+
+| Prueba | Repeticiones | Detectadas | Tasa | Latencia media | Criterio del protocolo | Resultado |
+|---|---|---|---|---|---|---|
+| Detención de la correa | 20 | 19 | 95 % | 0.8 s | 90 % o más | Cumple |
+| Desalineación lateral de 6 mm | 20 | 18 | 90 % | 0.5 s | 90 % o más | Cumple |
+| Paso de una piedra | 30 | 28 | 93 % | no aplica | 90 % o más | Cumple |
+| Operación normal durante 30 minutos | | 1 falsa alarma | | | Menos de una | No cumple |
 
 Los datos completos están en [pruebas_correa_fisica_inventadas.csv](../datos/pruebas_correa_fisica_inventadas.csv).
 
@@ -78,8 +80,8 @@ Los datos completos están en [pruebas_correa_fisica_inventadas.csv](../datos/pr
 
 - La detención que no se confirmó ocurrió con la luz baja de la mañana. La exposición bloqueada quedó corta y las marcas se veían con poco contraste. Es la misma falla que muestra la simulación con contraste bajo.
 - Las dos desalineaciones no detectadas tenían una de las líneas tapada por un reflejo. Encaja con el modo de falla de línea tapada de la prueba A.
-- Dos piedras bajas pasaron fuera del cono de 15 grados del sensor. Bajar el sensor de 12 a 10 cm cubriría más ancho útil.
-- La falsa alarma vino de una vibración del brazo del sensor al encender la correa.
+- Dos piedras bajas pasaron fuera del cono de 15 grados del sensor, que a 12 cm cubre unos 3 cm. Cubrir todo el ancho exigiría un segundo sensor.
+- La falsa alarma vino de una vibración del brazo del sensor al encender la correa, y por eso no se cumplió el criterio de menos de una. Un soporte más rígido y la histéresis en los umbrales apuntan a este problema.
 
 ## Prueba C, usuarios (inventado)
 
@@ -91,6 +93,8 @@ Los datos completos están en [pruebas_correa_fisica_inventadas.csv](../datos/pr
 | 4 | Profesor | 9 s | 3 de 4 |
 | 5 | Supervisor de planta | 5 s | 4 de 4 |
 | Promedio | | 5.8 s | 19 de 20, o 95 % |
+
+Criterios del protocolo, 80 % o más de estados bien identificados y menos de 10 segundos. Ambos se cumplen.
 
 Hallazgos de la entrevista.
 
@@ -107,6 +111,6 @@ Mejoras que salen de la prueba.
 
 El problema era que las detenciones y las salidas de eje de la correa no se detectan a tiempo. Los resultados responden a eso de la siguiente manera.
 
-- La simulación muestra que el sistema confirma una detención en unos 0.65 segundos y una desalineación en unos 0.3 segundos, mucho antes de lo que tardaría una persona en notarlo.
+- La simulación muestra que el sistema confirma una detención en unos 0.65 segundos y una desalineación en unos 0.3 segundos, lo que permite avisar al operador en cuanto ocurre.
 - El panel convierte las medidas en disponibilidad, conteo de detenciones, tiempo detenido y tiempo entre detenciones, que son los datos que un supervisor usaría para decidir. Están explicados en [captura_y_datos.md](../../software/docs/captura_y_datos.md).
 - Los resultados con la correa física y con usuarios son inventados, así que esta validación queda pendiente de medirse en un proyecto real.

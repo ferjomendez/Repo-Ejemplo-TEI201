@@ -9,7 +9,7 @@ El sistema tiene dos fuentes de datos que trabajan en paralelo.
 | Fuente | Qué mide | Frecuencia | Por qué esa frecuencia |
 |---|---|---|---|
 | Teléfono con CorreaCam | Imagen de la correa a 1080x1440 | Unos 10 cuadros por segundo | La correa se mueve entre 5 y 15 cm/s, así que entre cuadros avanza 0.5 a 1.5 cm. Es poco para la correlación de fase y alcanza para confirmar un cambio de estado en menos de un segundo |
-| ESP32 con HC-SR04 | Distancia a la correa | Unas 20 lecturas por segundo | Un objeto de unos pocos centímetros pasa bajo el sensor en pocas décimas de segundo, por lo que una lectura lenta lo perdería |
+| ESP32 con HC-SR04 (diseñado, firmware pendiente) | Distancia a la correa | Unas 20 lecturas por segundo previstas | Un objeto de unos pocos centímetros pasa bajo el sensor en pocas décimas de segundo, por lo que una lectura lenta lo perdería |
 
 De los cuadros el sistema extrae velocidad, desvío lateral y ángulo. Del sensor extrae la distancia. Esas cuatro medidas forman una muestra por segundo.
 
@@ -28,7 +28,7 @@ La Pi guarda todo en un archivo SQLite (`rockU.db`) con dos tablas.
 
 Las muestras se conservan 30 días por defecto (`--dias-muestras`) y los eventos quedan sin límite. Hay un índice por tiempo en cada tabla, así que consultar un rango de fechas es rápido incluso con semanas de datos.
 
-El histórico se descarga desde `/export/muestras.csv` y `/export/eventos.csv`, o con el botón Exportar CSV del panel. Hay filtros `desde` y `hasta` y un separador configurable. Los archivos usan UTF-8 con BOM para abrirse bien en Excel en español. La copia automática a un pendrive sigue en el plan del sistema y no está implementada.
+El histórico se descarga desde `/export/muestras.csv` y `/export/eventos.csv`, o con el botón Exportar CSV del panel. Hay filtros `desde` y `hasta` y un separador configurable. Los archivos usan UTF-8 con BOM para abrirse bien en Excel en español. La copia automática a un pendrive sigue en el plan del sistema y no está implementada. El botón Exportar de la pantalla de 3.5 pulgadas es hoy solo una maqueta del simulador.
 
 Las fotos de cada evento se guardan en `fotos/` y el evento guarda la ruta.
 
@@ -61,7 +61,7 @@ El sistema no entrega números sueltos. Los convierte en indicadores que respond
 | Número de detenciones y tiempo detenido | Conteo y suma de duraciones de los eventos `DETENIDA` | Permite comparar turnos |
 | Tiempo entre detenciones | Promedio entre inicios de detención consecutivos | Muestra si las fallas se vuelven más frecuentes |
 | Alerta de desalineación | Desvío mayor a 3 mm o ángulo mayor a 1 grado con los umbrales calibrados | Avisa antes de que la correa roce la estructura |
-| Alerta de objeto | La distancia cae bajo la base menos un margen durante 2 o 3 lecturas | Dispara una foto como evidencia |
+| Alerta de objeto (depende del firmware pendiente) | La distancia cae bajo la base menos un margen durante 2 o 3 lecturas | Dispara una foto como evidencia |
 | Umbrales calibrados | Se calculan del ruido medido con la correa en condición normal | Los umbrales se adaptan a cada instalación |
 
 Los límites visibles en el panel (detenida bajo 0.8 cm/s, desvío mayor a 8 mm, ángulo mayor a 2 grados) son los del modo simulador. En el modo real salen del archivo `calibracion.json`.

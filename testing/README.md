@@ -7,7 +7,7 @@ Comprobar que el prototipo mide bien, detecta las tres situaciones y entrega inf
 | Nivel | Qué se probó | Estado en este ejemplo |
 |---|---|---|
 | Simulación | Algoritmos con imágenes sintéticas en condiciones moderadas y extremas | **Real**, datos generados por los scripts del repositorio |
-| Correa física | Detenciones, desalineaciones y objetos sobre la correa a escala | **Inventado** |
+| Correa física | Detenciones, desalineaciones y objetos sobre la correa a escala. Supone terminado el firmware del sensor, que en el proyecto real sigue pendiente | **Inventado** |
 | Usuarios | Cinco personas interpretando el panel | **Inventado** |
 
 > Las secciones inventadas existen para que el ejemplo tenga el formato completo. No son mediciones. En tu proyecto, el testing con usuarios debe tener al menos 5 personas reales y evidencia fotográfica o en video.

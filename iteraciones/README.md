@@ -17,7 +17,7 @@ iteraciones/
 
 | Aspecto | v1 | v2 | v3 |
 |---|---|---|---|
-| Fecha (ejemplo) | 20-03-2026 | 24-04-2026 | 29-05-2026 |
+| Fecha (ejemplo) | 04-09-2026 | 02-10-2026 | 06-11-2026 |
 | Cámara | ESP32-CAM, 320x240 | Teléfono, 1080x1440 | Teléfono, 1080x1440 |
 | Cuadros por segundo | 5.6 | 10.3 | 10.3 |
 | Análisis | Básico en la Pi | Velocidad y alineación con calibración | Igual que v2 con confirmación por persistencia |

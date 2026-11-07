@@ -1,6 +1,6 @@
 # Iteración 3, sistema completo
 
-Fecha de ejemplo, 29-05-2026. El detalle de fechas es inventado.
+Fecha de ejemplo, 06-11-2026. El detalle de fechas es inventado.
 
 ![Arquitectura de la versión 3](arquitectura_v3.png)
 

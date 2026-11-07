@@ -1,0 +1,5 @@
+﻿Prueba,Repeticiones,Detectadas,Latencia media (s),Observación
+Detención de la correa,20,19,0.8,Una detención no se confirmó con luz baja
+Desalineación lateral de 6 mm,20,18,0.5,Dos casos con una línea tapada por un reflejo
+Paso de una piedra,30,28,,Dos piedras bajas pasaron fuera del cono del sensor
+Operación normal durante 30 minutos,1,1,,Una falsa alarma de desalineación por vibración del brazo

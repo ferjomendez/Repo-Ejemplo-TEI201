@@ -1,6 +1,6 @@
 # Iteración 1, concepto inicial
 
-Fecha de ejemplo, 20-03-2026. El detalle de fechas es inventado.
+Fecha de ejemplo, 04-09-2026. El detalle de fechas es inventado.
 
 ![Arquitectura de la versión 1](arquitectura_v1.png)
 

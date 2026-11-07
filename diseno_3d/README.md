@@ -13,7 +13,8 @@ El modelo debe tener todos los componentes del prototipo con sus volúmenes real
 | Perfboard con TTGO, driver, bornera y condensador | Modelo real en el `.f3d` y volúmenes en el ensamble |
 | Pantalla de 3.5 pulgadas | Volumen de 85 x 56 x 5 mm bajo la ventana de la tapa |
 | Separadores M3 | Cuatro bajo la perfboard y cuatro bajo la Pi |
-| Teléfono, sensor y brazos | Fuera del encapsulado, descritos en las fotos y en los planos de montaje |
+| Motor, ESP32-CAM, HC-SR04, teléfono y fuente de 12 V | Fuera del encapsulado, modelados como volúmenes simples a un costado de la caja en el STL de ejemplo |
+| Brazos de soporte | Descritos en las fotos, sin modelar |
 
 ## Carpetas
 
@@ -36,7 +37,7 @@ El modelo debe tener todos los componentes del prototipo con sus volúmenes real
 
 ## Funcionalidad del encapsulado
 
-- La tapa tiene una ventana de 120 x 80 mm para la pantalla táctil.
+- La tapa tiene una ventana de 75 x 50 mm para la zona activa de la pantalla táctil, que va sujeta por detrás de la tapa.
 - Hay siete ranuras de ventilación sobre la Raspberry Pi.
 - El costado derecho deja abiertos el USB y el Ethernet de la Pi.
 - La entrada de 12 V sale por el costado izquierdo, donde está la bornera.
