@@ -9,7 +9,7 @@
 ## Información del equipo
 
 - **Integrantes**
-  - Fer Méndez, líder del proyecto, coordinación y repositorio
+  - Fernando Méndez, líder del proyecto, coordinación y repositorio
   - Sam Altman, software y algoritmos de visión
   - Dario Amodei, hardware y electrónica
   - Elon Musk, diseño 3D y encapsulado
