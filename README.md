@@ -8,11 +8,12 @@
 
 ## Información del equipo
 
-- **Integrantes** (nombres de ejemplo)
-  - Integrante 1, software y algoritmos de visión
-  - Integrante 2, hardware y electrónica
-  - Integrante 3, diseño 3D y encapsulado
-  - Integrante 4, testing, datos y documentación
+- **Integrantes**
+  - Fer Méndez, líder del proyecto, coordinación y repositorio
+  - Sam Altman, software y algoritmos de visión
+  - Dario Amodei, hardware y electrónica
+  - Elon Musk, diseño 3D y encapsulado
+  - Mark Zuckerberg, testing, datos y documentación
 - **ODS seleccionado** ODS 9, Industria, innovación e infraestructura
 - **Problema a resolver** Las correas transportadoras de la minería se detienen sin aviso, se salen de su eje o arrastran objetos que dañan el sistema. Cada detención no planificada corta la producción y la detección suele depender de que alguien lo note.
 
